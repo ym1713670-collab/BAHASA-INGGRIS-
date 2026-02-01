@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wedding Invitation - FINAL BOSS UPGRADE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Playfair Display',serif;
+}
+
+body{
+  background: linear-gradient(180deg,#87ceeb,#f5d1b8);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* SLIDE */
+.slide{
+  display:none;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+}
+
+.slide.active{
+  display:flex;
+  animation:fade 1s ease;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:scale(0.95);}
+  to{opacity:1; transform:scale(1);}
+}
+
+/* CARD UNDANGAN */
+.card{
+  position:relative;
+  width:92%;
+  max-width:400px;
+  background:linear-gradient(180deg,#fffefb,#fff4e6);
+  padding:50px 28px;
+  border-radius:35px;
+  border:5px solid #d4af37;
+  box-shadow:0 0 0 6px #fff,0 0 0 12px #d4af37,0 30px 70px rgba(0,0,0,0.35);
+  text-align:center;
+  overflow:hidden;
+}
+
+/* CINCIN MUTER */
+.rings{
+  position:absolute;
+  top:-40px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:50px;
+  color:#d4af37;
+  text-shadow:0 0 20px rgba(212,175,55,0.8);
+  animation:spin 20s linear infinite;
+}
+@keyframes spin{
+  from{transform:translateX(-50%) rotate(0deg);}
+  to{transform:translateX(-50%) rotate(360deg);}
+}
+
+/* MAWAR JATUH */
+.roses{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.roses span{
+  position:absolute;
+  font-size:32px;
+  animation:fall linear infinite;
+}
+.roses span:nth-child(1){left:5%; animation-duration:10s; top:-5%; color:#ff5b8c;}
+.roses span:nth-child(2){left:25%; animation-duration:12s; top:-5%; color:#ff1f4b;}
+.roses span:nth-child(3){left:45%; animation-duration:11s; top:-5%; color:#ff8cb4;}
+.roses span:nth-child(4){left:65%; animation-duration:13s; top:-5%; color:#ff4b7b;}
+.roses span:nth-child(5){left:85%; animation-duration:9s; top:-5%; color:#ff3f66;}
+.roses span:nth-child(6){left:35%; animation-duration:14s; top:-5%; color:#ff6a90;}
+.roses span:nth-child(7){left:55%; animation-duration:15s; top:-5%; color:#ff2f5c;}
+.roses span:nth-child(8){left:75%; animation-duration:16s; top:-5%; color:#ff4f8a;}
+
+@keyframes fall{
+  0%{transform:translateY(0px) rotate(0deg);}
+  100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* TEKS UNDANGAN */
+h1{font-size:34px; letter-spacing:4px; color:#b38b2e; margin-bottom:12px;}
+h2{font-size:28px; margin:8px 0;}
+p{font-size:15px; line-height:1.8; margin:6px 0;}
+.divider{font-size:24px; margin:14px 0; color:#cfa14a;}
+
+/* TOMBOL */
+.btn{
+  margin-top:28px;
+  padding:14px 46px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#d4af37,#fff1a8);
+  color:#3a2a00;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(212,175,55,0.7);
+}
+
+/* TOMBOL PAUSE/PLAY */
+.audio-control{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  padding:12px 20px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#d4af37,#fff1a8);
+  color:#3a2a00;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(212,175,55,0.6);
+  z-index:999;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" src="bergema-selamanya.mp3" loop></audio>
+<button class="audio-control" id="audioBtn">Pause Music</button>
+
+<div class="roses">
+  <span>🌹</span><span>🌹</span><span>🌹</span><span>🌹</span>
+  <span>🌹</span><span>🌹</span><span>🌹</span><span>🌹</span>
+</div>
+
+<!-- SLIDE 1 -->
+<div class="slide active" id="slide1">
+  <div class="card">
+    <div class="rings">💍 💍</div>
+    <h1>Wedding Invitation</h1>
+    <div class="divider">🌹 ✦ 🌹</div>
+    <p>Assalamu’alaikum Wr. Wb.</p>
+    <button class="btn" onclick="openInvitation()">BUKA UNDANGAN</button>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="slide2">
+  <div class="card">
+    <div class="rings">💍 💍</div>
+    <p>We would like to invite</p>
+    <p><strong>Class X-E and family</strong></p>
+    <p>to attend our wedding party.</p>
+
+    <div class="divider">🌹 🌹 🌹</div>
+
+    <h2>Bebby Aprilla</h2>
+    <p>and</p>
+    <h2>Hazel Pratama</h2>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <p>Day / Date : Sunday, 26th June 2026</p>
+    <p>Time : 13.00 – end</p>
+    <p>Venue : KTM Resort Beach</p>
+
+    <button class="btn" onclick="nextSlide()">NEXT</button>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="slide3">
+  <div class="card">
+    <div class="rings">💍 💍</div>
+    <p>We hope that Class X-E and family</p>
+    <p>can attend our wedding party.</p>
+    <p>Thank you.</p>
+
+    <div class="divider">🌹 🌹 🌹</div>
+
+    <p>Wassalamu’alaikum Wr. Wb.</p>
+
+    <p><strong>RSVP</strong></p>
+    <p>0807-6767-6768</p>
+
+    <br>
+    <p style="font-style:italic">
+      “Cinta yang dirayakan dengan penuh kebahagiaan  
+      akan dikenang sepanjang masa.”
+    </p>
+  </div>
+</div>
+
+<script>
+const music = document.getElementById("music");
+const audioBtn = document.getElementById("audioBtn");
+const slide1 = document.getElementById("slide1");
+const slide2 = document.getElementById("slide2");
+const slide3 = document.getElementById("slide3");
+
+function openInvitation(){
+  slide1.classList.remove("active");
+  slide2.classList.add("active");
+  music.play();
+}
+
+function nextSlide(){
+  slide2.classList.remove("active");
+  slide3.classList.add("active");
+}
+
+/* Tombol pause/play */
+audioBtn.addEventListener("click", ()=>{
+  if(music.paused){
+    music.play();
+    audioBtn.innerText="Pause Music";
+  } else{
+    music.pause();
+    audioBtn.innerText="Play Music";
+  }
+});
+</script>
+
+</body>
+</html>
